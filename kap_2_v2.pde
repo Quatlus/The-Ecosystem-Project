@@ -70,10 +70,9 @@ void draw () {
     }
   }
 
-  //if(frameCount-time1)
   run =  run + .005;
   wind = noise(run)-.5;
-  //println(wind, run);
+
 }
 
 void mousePressed() {
@@ -90,8 +89,6 @@ void keyPressed() {
       karnickel.addForce(right);
       karnickel.velocity.add(new PVector(2, 0));
     }
-
-    //println(keyCode);
   } else {
     if (key==' ') {
       karnickel.addForce(up);
@@ -99,6 +96,5 @@ void keyPressed() {
     if (key == 'f') {
       karnickel.feed(10);
     }
-    //println(key + "not coded");
   }
 }
