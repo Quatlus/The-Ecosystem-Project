@@ -61,11 +61,9 @@ function draw() {
 
 	if (keyIsDown(37)) {
 		karnickel.addForce(left);
-		// karnickel.velocity.add(createVector(-2, 0));
 	}
 	if (keyIsDown(39)) {
 		karnickel.addForce(right);
-		// karnickel.velocity.add(createVector(2, 0));
 	}
 	if (keyIsDown(32) || keyIsDown(38)) {
 		karnickel.addForce(up);
