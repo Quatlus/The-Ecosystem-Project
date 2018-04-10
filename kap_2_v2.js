@@ -2,7 +2,7 @@ function setup() {
 	brushColor      = color("#A24682");
 	bodyColor       = color(120);
 	backgroundColor = color(100);
-	bodyCarrotColor = color(255, 102, 102, 200);//ff6666fill("#ff6666");
+	bodyCarrotColor = color(255, 102, 102, 200);//ff6666
 	headCarrotColor = color(70,140); //12FFCD
 	headColor       = color(10);
 	eyeColor        = color("#ffffff");
