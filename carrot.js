@@ -32,7 +32,7 @@ class EsCarrot {
       this.addForce(createVector(abs(wind/200), wind/200));
     }
     this.velocity.add(this.acceleration);
-    //this.velocity.limit(2.4);
+    this.velocity.limit(2.4);
     this.position.add(this.velocity);
     this.acceleration.mult(0);
   }
