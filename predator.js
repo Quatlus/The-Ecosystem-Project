@@ -24,7 +24,7 @@ class EsPredator {
         direction.mult(width/power/4.5); //map(power,0,width,10,0)
         direction.y = -abs(direction.x)*6;
         //if(direction.y>-3) direction.y = 0;
-        if(direction.y<-15) {
+        if(direction.y<-12) {
           console.log(power);
           beep(map(power, 50, 100, 20, 220),.06, 'triangle', 1);
         } //direction.y = -15;
