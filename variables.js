@@ -21,3 +21,5 @@ var run = 0;
 var framesActive = false;
 var hit = false;
 var mode = 1;
+
+var predCount = 301;

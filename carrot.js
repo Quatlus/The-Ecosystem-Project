@@ -33,7 +33,7 @@ class EsCarrot {
   update () {
 
     var friction = this.velocity.copy();
-		var c =  .025;
+		var c =  .023;
 		friction.normalize();
 		friction.mult(-1);
 		friction.mult(c);

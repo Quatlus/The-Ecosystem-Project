@@ -2,8 +2,8 @@ class EsPredator {
 
     constructor() {
       this.size = 50;
-      this.acceleration = createVector(-10, 0);
-  		this.velocity 		= createVector(-1, 0);
+      this.acceleration = createVector(0, 0);
+  		this.velocity 		= createVector(0, 0);
   		this.position 		= createVector(width+500 ,height-this.size);
 
     }

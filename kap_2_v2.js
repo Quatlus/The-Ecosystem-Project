@@ -77,6 +77,18 @@ function draw() {
 	text('predator: hit p', 10, 50);
 	text(nf(frameCount,8,0) + ' // ' + nf(round(millis()/1000),8,0) + ' // ' + nf(round(karnickel.size),10,0), 5, 70);
 
+	if (frameCount%predCount == 0) {
+		predatorStart();
+		console.log(predCount);
+	}
+}
+
+function predatorStart () {
+
+	predator.velocity.x = 0;
+	predator.position.x = width + 50;
+	predator.addForce(createVector(-15,0));
+	predCount = round(random(401,1201));
 }
 
 function keyPressed() {
@@ -88,8 +100,6 @@ function keyPressed() {
 	}
 
 	if (keyCode == 80) {
-		predator.velocity.x = 0;
-		predator.position.x = width + 50;
-		predator.addForce(createVector(-15,0));
+		predatorStart();
 	}
 }

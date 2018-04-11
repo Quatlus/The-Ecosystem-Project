@@ -8,7 +8,7 @@ class EsBody {
 		this.position 		= createVector(width/2 ,height);
 		this.kopf = new EsHead(this.size/3.5, this.position.x, this.position.y-this.size/2);
 		ellipseMode(RADIUS);
-		console.log(this.size);
+		//console.log(this.size);
 	}
 
 	addForce (f) {
