@@ -2,7 +2,7 @@ function setup() {
 	brushColor      = color("#A24682");
 	bodyColor       = color(120);
 	backgroundColor = color(100);
-	bodyCarrotColor = color(255, 102, 102, 200);//ff6666
+	bodyCarrotColor = color(255, 102, 102, 200);//ff6666fill("#ff6666");
 	headCarrotColor = color(70,140); //12FFCD
 	headColor       = color(10);
 	eyeColor        = color("#ffffff");
@@ -56,14 +56,16 @@ function draw() {
 	predator.show();
 	predator.attackBody(karnickel);
 
-	run =  run + .005;
+	run =  run + .01;
 	wind = noise(run)-.5;
-
+ //console.log(wind);
 	if (keyIsDown(37)) {
 		karnickel.addForce(left);
+		// karnickel.velocity.add(createVector(-2, 0));
 	}
 	if (keyIsDown(39)) {
 		karnickel.addForce(right);
+		// karnickel.velocity.add(createVector(2, 0));
 	}
 	if (keyIsDown(32) || keyIsDown(38)) {
 		karnickel.addForce(up);
@@ -71,8 +73,10 @@ function draw() {
 
 	textSize(14);
 	fill(140);
-	text('control: left arrow & up arrow || space bar & right arrow', 10, 30);
-	text('predator: p', 10, 50);
+	text('control: left arrow & up arrow | space bar & right arrow', 10, 30);
+	text('predator: hit p', 10, 50);
+	text(nf(frameCount,8,0) + ' // ' + nf(round(millis()/1000),8,0) + ' // ' + nf(round(karnickel.size),10,0), 5, 70);
+
 }
 
 function keyPressed() {
