@@ -75,7 +75,7 @@ function draw() {
 	fill(140);
 	text('control: left arrow & up arrow | space bar & right arrow', 10, 30);
 	text('predator: hit p', 10, 50);
-	text(nf(frameCount,8,0) + ' // ' + nf(round(millis()/1000),8,0) + ' // ' + nf(round(karnickel.size),10,0), 5, 70);
+	text(nf(frameCount,8,0) + ' // ' + nf(round(millis()/1000),8,0) + ' // ' + nf(round(karnickel.size),10,0), 10, 70);
 
 	if (frameCount%predCount == 0) {
 		predatorStart();
