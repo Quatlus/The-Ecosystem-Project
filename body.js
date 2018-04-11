@@ -86,7 +86,7 @@ class EsBody {
 				carrot.position.x = -random(100, 200);
 				karnickel.feed(map(carrot.size, 5, 20, 5, 20));
 
-				beep(map(carrot.size, 5, 20, 50, 90),.15, 'square', .5);
+				beep(map(carrot.size, 5, 20, 40, 60),.15, 'square', .5);
 			}
 		}
 	}
