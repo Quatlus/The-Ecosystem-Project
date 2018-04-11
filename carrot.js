@@ -67,6 +67,7 @@ class EsCarrot {
       framesActive = frameCount;
       hit++;
       mode = 2;
+      beep(map(this.size, 5, 20, 48, 90),.1,'triangle', .1);
     }
     if (this.position.y < -50) {
       this.position.y = height + 50;

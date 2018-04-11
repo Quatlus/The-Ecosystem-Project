@@ -103,3 +103,13 @@ function keyPressed() {
 		predatorStart();
 	}
 }
+
+function beep (f, t, w, a) {
+	var wave;
+	wave = new p5.Oscillator();
+	wave.setType(w);
+	wave.start();
+	wave.amp(a);
+	wave.freq(map(f, 50,100,50,600));
+	wave.stop(t);
+}
