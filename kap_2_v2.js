@@ -5,11 +5,9 @@ var names;
 function setup() {
 
 	{
-		backgroundColor = color(200, 30, 30);
-		backgroundColor = color(80);
-
+		backgroundColor = color(50);
 		bodyCarrotColor = color(255, 102, 102, 200); //ff6666fill("#ff6666");
-		headCarrotColor = color(50, 240); //12FFCD
+		headCarrotColor = color(0, 160); //12FFCD
 		headColor = color(10);
 		eyeColor = color("#ffffff");
 
@@ -17,8 +15,8 @@ function setup() {
 		frameRate(30);
 	}
 
-	names = ['Heidi', 'Schnucke', 'Zappo', 'Peppi', 'Flopso'];
-	bunsheeps = new Array(2).fill().map((b, i) => new EsBunshee(names[i]));
+	names = [['Wuti',226], ['Heidi',26], ['Schnucke',10], ['Zappo',230], ['Peppi',0], ['Flopso',255], ['Schnorksi',0], ['Pups',255], ['Schnappus',30], ['Frobso',225]];
+	bunsheeps = new Array(10).fill().map((b, i) => new EsBunshee(names[i][0],names[i][1]));
 	predatorsAndFood = new EsPredatorsAndFood();
 }
 
@@ -28,13 +26,12 @@ function draw() {
 	for (let bunshee of bunsheeps) {
 		bunshee.display();
 		predatorsAndFood.predatorCheck(bunshee.karnickel);
-		//console.log('oben ' + bunshee.karnickel.name);
+		predatorsAndFood.carrotCheck(bunshee.karnickel);
+		predatorsAndFood.checkSelf(bunshee.karnickel);
 	}
 
 	if (frameCount % predCount == 0) {
-		for (let bunshee of bunsheeps) {
-			predatorsAndFood.predatorStart();
-		}
+			//predatorsAndFood.predatorStart();
 	}
 
 	predatorsAndFood.predatorShow();
@@ -48,8 +45,6 @@ function keyPressed() {
 		//karnickel.feed(10);
 	}
 	if (keyCode == 80) {
-		for (let bunshee of bunsheeps) {
 			predatorsAndFood.predatorStart();
-		}
 	}
 }

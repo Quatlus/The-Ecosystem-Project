@@ -1,16 +1,16 @@
 class EsPredator {
 
   constructor() {
-    this.size = 50;
+    this.size = 40;
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, 0);
     this.position = createVector(width + 500 - random(100), height - this.size);
-    this.red = random(255, 255);
+    this.red = random(50, 80);
   }
 
   show() {
     push();
-    fill(this.red, 50, 200);
+    fill(bodyCarrotColor);
     translate(-this.size / 2, 0);
     rect(this.position.x, this.position.y, this.size, this.size);
     pop();
@@ -60,4 +60,6 @@ class EsPredator {
     friction.mult(c);
     return friction;
   }
+
+
 }

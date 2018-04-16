@@ -1,6 +1,6 @@
 class EsBunshee {
 
-  constructor(name) {
+  constructor(name, color_) {
     this.name = name;
     this.karnickel;
 
@@ -17,7 +17,7 @@ class EsBunshee {
     this.Child = EsBody;
     this.Child.prototype.parent = this;
 
-    this.karnickel = new EsBody(80, name, this);
+    this.karnickel = new EsBody(80, name, color_, this);
 
     this.karnickel.addForce(new p5.Vector(-4, -120));
 

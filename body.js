@@ -1,6 +1,6 @@
 class EsBody {
 
-	constructor(size, name, this_) {
+	constructor(size, name, color_, this_) {
 
 		this.Child = EsHead;
 		this.Child.prototype.parent = this;
@@ -12,12 +12,12 @@ class EsBody {
 		this.mass = size / 20;
 		this.acceleration = createVector(0, 0);
 		this.velocity = createVector(0, 0);
-		this.position = createVector(random(width), height);
+		this.position = createVector(random(width/2)+200, height);
 		this.kopf = new EsHead(this.size / 3.5, this.position.x, this.position.y -
 			this.size / 2, this);
 		ellipseMode(RADIUS);
 
-		this.bodyColor = color(random(60, 240));
+		this.bodyColor = color(color_);//color(random(60, 240));
 		// console.log(this.position);
 	}
 
@@ -43,7 +43,7 @@ class EsBody {
 		var localSpeed = this.velocity.copy();
 		slowPosition.sub(localSpeed.mult(.5));
 		fill(this.bodyColor);
-		for (var i = 0; i < 360; i += 20 - (this.size / 20)) {
+		for (var i = 0; i < 360; i += 20 ) { //- (this.size / 20)
 			var ix = cos(radians(i)) * this.size;
 			var iy = sin(radians(i)) * this.size;
 			ellipse(slowPosition.x + ix, slowPosition.y - 50 + iy, 20 + this.size / 15,
@@ -58,10 +58,17 @@ class EsBody {
 	}
 
 	checkEdges() {
-		if (this.position.x + this.size / 2 < 0) {
-			this.position.x = width + this.size / 2;
-		} else if (this.position.x - this.size / 2 > width) {
-			this.position.x = -this.size / 2;
+		// if (this.position.x + this.size / 2 < 0) {
+		// 	this.position.x = width + this.size / 2;
+		// } else if (this.position.x - this.size / 2 > width) {
+		// 	this.position.x = -this.size / 2;
+		// }
+
+		if (this.position.x - this.size < 0) {
+			this.position.x = this.size ;
+		} else if (this.position.x + this.size > width) {
+			this.position.x = width - this.size;
+
 		}
 
 		if (this.position.y > height) {
@@ -84,6 +91,7 @@ class EsBody {
 	}
 
 	feed(cal) {
+		
 		this.size = this.size + cal;
 		if (this.size < 40) {
 			this.size = 40;

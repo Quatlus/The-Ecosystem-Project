@@ -4,7 +4,7 @@ class EsPredatorsAndFood {
 
     this.predator = new EsPredator();
     this.carrots = [];
-    this.carrotCount = 1;
+    this.carrotCount = 20;
 
     this.wind = 0;
     this.run = 0;
@@ -31,43 +31,63 @@ class EsPredatorsAndFood {
       carrot.update();
       carrot.show();
 
-      //that.karnickel.checkCollision(carrot);
     });
   }
 
   carrotsCheckEnd(bunsheeps) {
-    // console.log(karnickel.name);
     this.carrots.forEach(function (carrot) {
       carrot.checkFloor(bunsheeps);
-      //console.log('mitte ' + karnickel.name);
     });
 
   }
 
-  checkCollision(carrot) {
-    var kopf_links = this.kopf.headposition.x - this.kopf.size;
-    var kopf_rechts = this.kopf.headposition.x + this.kopf.size;
-    var carotte_x = carrot.position.x + carrot.size / 1;
-    var kopf_oben = this.kopf.headposition.y - 1.5 * this.kopf.size;
-    var kopf_unten = this.kopf.headposition.y + .5 * this.kopf.size;
-    var carotte_y = carrot.position.y - carrot.size / 2;
+  carrotCheck(karnickel) {
 
-    if (carotte_x > kopf_links && carotte_x < kopf_rechts) {
-      if (carotte_y > kopf_oben && carotte_y < kopf_unten) {
-        // bunshee.setFramesActive(frameCount);
-        // bunshee.setHit(1);
-        // bunshee.setMode(1);
-        this.parent.setFramesActive(frameCount);
-        this.parent.setHit(1);
-        this.parent.setMode(1);
+    this.carrots.forEach(function (carrot) {
 
-        carrot.position.x = -random(100, 200);
-        this.feed(map(carrot.size, 5, 20, 5, 20));
+      var kopf_links = karnickel.kopf.headposition.x - karnickel.kopf.size;
+      var kopf_rechts = karnickel.kopf.headposition.x + karnickel.kopf.size;
+      var carotte_x = carrot.position.x + carrot.size / 1;
+      var kopf_oben = karnickel.kopf.headposition.y - 1.5 * karnickel.kopf.size;
+      var kopf_unten = karnickel.kopf.headposition.y + .5 * karnickel.kopf.size;
+      var carotte_y = carrot.position.y - carrot.size / 2;
 
-        EsBunshee.beep(map(carrot.size, 5, 20, 40, 60), .15, 'square', .5);
+      if (carotte_x > kopf_links && carotte_x < kopf_rechts) {
+        if (carotte_y > kopf_oben && carotte_y < kopf_unten) {
+          karnickel.parent.setFramesActive(frameCount);
+          karnickel.parent.setHit(1);
+          karnickel.parent.setMode(1);
+          carrot.position.x = -random(100, 200);
+          karnickel.feed(map(carrot.size, 5, 20, 2, 10));
+        //  console.log(karnickel.size);
+          EsBunshee.beep(map(carrot.size, 5, 20, 40, 60), .15, 'square', .5);
+        }
+      }
+
+    });
+
+  }
+
+
+  checkSelf(body) {
+    for (let otherbody of bunsheeps) {
+      //console.log(otherbody.karnickel,body);
+      otherbody = otherbody.karnickel;
+      if (otherbody != body) {
+        let abstand = p5.Vector.sub(body.position, otherbody.position);
+        let power = abstand.mag();
+        if(power < body.size*2) {
+          let direction = abstand.normalize();
+          direction.mult(5);
+          body.addForce(direction);
+        }
       }
     }
+
+    // let power = abstand.mag();
+    // let direction = abstand.normalize();
   }
+
 
   predatorShow() {
     this.predator.checkEdges();
@@ -82,7 +102,7 @@ class EsPredatorsAndFood {
   predatorStart() {
     this.predator.velocity.x = 0;
     this.predator.position.x = width + 50 - random(100);
-    this.predator.addForce(createVector(-11, 0));
+    this.predator.addForce(createVector(-20, 0));
     this.predCount = round(random(401, 1201));
   }
 

@@ -17,9 +17,6 @@ class EsCarrot {
     translate(this.position.x, this.position.y);
     var tmp = this.velocity.copy();
     var dir = atan(tmp.y / tmp.x);
-    //dir = map(dir, -1, 1, -90, 90);
-    //dir = radians(dir);
-    //console.log(dir);
     rotate(-HALF_PI + dir);
 
     triangle(0, 0, this.size, 0, this.size / 2, this.size * 3);
@@ -59,7 +56,7 @@ class EsCarrot {
       this.velocity.x = .2 / this.size;
 
       for (let bunshee of bunsheeps) {
-        bunshee.karnickel.feed(-5);
+        bunshee.karnickel.feed(-map(bunshee.karnickel.size,50,250,1,1));
         bunshee.karnickel.parent.setFramesActive(frameCount);
         bunshee.karnickel.parent.setHit(1);
         bunshee.karnickel.parent.setMode(2);
@@ -67,13 +64,13 @@ class EsCarrot {
 
       EsBunshee.beep(map(this.size, 5, 20, 48, 90), .1, 'triangle', .1);
     }
+
     if (this.position.y < -50) {
       this.position.y = height + 50;
-      //this.velocity.y = -this.velocity.y;
     }
+
     if (this.position.y > height + 50) {
       this.position.y = -50;
-      //this.velocity.y = -this.velocity.y;
     }
   }
 
