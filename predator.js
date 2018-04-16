@@ -16,7 +16,6 @@ class EsPredator {
     }
 
     attackBody(body) {
-        //console.log(body.position);
 
         var abstand = p5.Vector.sub(body.position,this.position);
         let power = abstand.mag();
@@ -25,12 +24,10 @@ class EsPredator {
         direction.y = -abs(direction.x)*6;
         //if(direction.y>-3) direction.y = 0;
         if(direction.y<-12) {
-          console.log(power);
-          beep(map(power, 50, 100, 20, 220),.06, 'triangle', 1);
+          //console.log(power);
+          EsBunshee.beep(map(power, 50, 100, 20, 220),.06, 'triangle', 1);
         } //direction.y = -15;
-        //let force = width-abstand;
-        karnickel.addForce(direction);
-      //  console.log(direction, width/power, -abs(direction.x)*2);
+        bunshee.karnickel.addForce(direction);
     }
 
     addForce (f) {
@@ -49,11 +46,6 @@ class EsPredator {
   	}
 
     checkEdges() {
-  		// if (this.position.x+this.size/2 < 0) {
-  		// 	this.position.x = width+this.size/2;
-  		// } else if (this.position.x - this.size/2 > width) {
-  		// 	this.position.x = -this.size/2;
-  		// }
 
   		if (this.position.y > height-this.size) {
   			this.position.y = height-this.size;

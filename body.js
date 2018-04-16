@@ -8,7 +8,6 @@ class EsBody {
 		this.position 		= createVector(width/2 ,height);
 		this.kopf = new EsHead(this.size/3.5, this.position.x, this.position.y-this.size/2);
 		ellipseMode(RADIUS);
-		//console.log(this.size);
 	}
 
 	addForce (f) {
@@ -31,16 +30,16 @@ class EsBody {
 		noStroke();
 		var slowPosition = this.position.copy();
 		var localSpeed = this.velocity.copy();
-		slowPosition.sub(localSpeed.mult(1));
-		fill(70);
-		for (var i = 0; i < 360; i+=20-(karnickel.size/20)) {
+		slowPosition.sub(localSpeed.mult(.5));
+		fill(bodyColor);
+		for (var i = 0; i < 360; i+=20-(this.size/20)) {
 			var ix = cos(radians(i))*this.size;
 			var iy = sin(radians(i))*this.size;
-			ellipse(slowPosition.x+ix, slowPosition.y-50+iy, 20+karnickel.size/15, 20+karnickel.size/15);
+			ellipse(slowPosition.x+ix, slowPosition.y-50+iy, 20+this.size/15, 20+this.size/15);
 		}
-		fill(70);
+		fill(bodyColor);
 		ellipse(this.position.x, this.position.y-50, this.size, this.size);
-		fill(65);
+		fill(10);
 		ellipse(this.position.x, this.position.y, this.size/3, this.size/3);
 
 		this.kopf.show(	this.position.x, this.position.y-this.size,	this.velocity);
@@ -68,25 +67,19 @@ class EsBody {
 		var kopf_unten = this.kopf.headposition.y+.5*this.kopf.size;
 		var carotte_y = carrot.position.y-carrot.size/2;
 
-		// strokeWeight(1);
-		// stroke(0, 255, 0, 120);
-		// fill(255, 0);
-		// ellipse(carotte_x, carotte_y, 5, 5);
-		// stroke(0, 255, 0, 20);
-		// ellipse(kopf_links, this.kopf.headposition.y-this.kopf.size/2, 2, 2);
-		// ellipse(kopf_rechts, this.kopf.headposition.y-this.kopf.size/2, 2, 2);
-		// ellipse(this.kopf.headposition.x, kopf_oben, 2, 2);
-		// ellipse(this.kopf.headposition.x, kopf_unten, 2, 2);
-
 		if (carotte_x > kopf_links && carotte_x < kopf_rechts) {
 			if (carotte_y > kopf_oben && carotte_y < kopf_unten) {
-				framesActive = frameCount;
-				hit++;
-				mode = 1;
-				carrot.position.x = -random(100, 200);
-				karnickel.feed(map(carrot.size, 5, 20, 5, 20));
+				bunshee.setFramesActive(frameCount);
+				//hit++;
+				bunshee.setHit(1);
+				bunshee.setMode(1);
+			//	mode = 1;
 
-				beep(map(carrot.size, 5, 20, 40, 60),.15, 'square', .5);
+
+				carrot.position.x = -random(100, 200);
+				this.feed(map(carrot.size, 5, 20, 5, 20));
+
+				EsBunshee.beep(map(carrot.size, 5, 20, 40, 60),.15, 'square', .5);
 			}
 		}
 	}

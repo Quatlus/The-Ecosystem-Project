@@ -5,7 +5,6 @@ class EsCarrot {
     this.acceleration = createVector(0,0);
     this.velocity = createVector(0, 0);
     this.size = s;
-
     this.addForce(createVector(.4,0));
   }
 
@@ -38,15 +37,7 @@ class EsCarrot {
 		friction.mult(-1);
 		friction.mult(c);
     this.addForce(friction);
-    var xwind = map(wind, -.5, .5, .42, .46);
-    //console.log(xwind);
-   if (this.position.x > width/3) {
-    this.addForce(createVector(abs(xwind/20), wind/20));
-  } else {
-    this.addForce(createVector(abs(xwind/15), wind/50));
 
-
-  }
     this.velocity.limit(8);
     this.velocity.add(this.acceleration);
 
@@ -59,15 +50,17 @@ class EsCarrot {
     this.acceleration.add(force);
   }
 
-  checkFloor () {
+  checkFloor (karnickel) {
     if (this.position.x > width) {
       this.position.x -= width+150;
       this.velocity.x = .2/this.size;
       karnickel.feed(-5);
-      framesActive = frameCount;
-      hit++;
-      mode = 2;
-      beep(map(this.size, 5, 20, 48, 90),.1,'triangle', .1);
+      bunshee.setFramesActive(frameCount);
+      //hit++;
+      bunshee.setHit(1);
+      bunshee.setMode(2);
+      //mode = 2;
+      EsBunshee.beep(map(this.size, 5, 20, 48, 90),.1,'triangle', .1);
     }
     if (this.position.y < -50) {
       this.position.y = height + 50;
@@ -78,4 +71,5 @@ class EsCarrot {
       //this.velocity.y = -this.velocity.y;
     }
    }
+
 }
