@@ -2,10 +2,7 @@ class EsBunshee {
 
   constructor(name, color_) {
     this.name = name;
-    this.karnickel;
-
     this.eye = 3;
-
     this.framesActive = false;
     this.hit = false;
     this.mode = 1;
@@ -13,19 +10,17 @@ class EsBunshee {
     this.right;
     this.up;
     strokeCap(PROJECT);
-
-    this.Child = EsBody;
-    this.Child.prototype.parent = this;
-
-    this.karnickel = new EsBody(80, name, color_, this);
-
+    this.karnickel = new EsBody(55, name, color_, this);
     this.karnickel.addForce(new p5.Vector(-4, -120));
-
     this.left = createVector(-5, 0);
     this.right = p5.Vector.mult(this.left, -1);
     this.up = createVector(0, -15);
-
     this.ps = new ParticleSystem(299, 200, this.karnickel);
+    bodyCarrotColor = color(255, 102, 102, 200);
+    backgroundColor = color(50);
+    headCarrotColor = color(0, 160); //12FFCD
+    headColor = color(10);
+    eyeColor = color("#ffffff");
   }
 
   setHit(hit) {
@@ -71,7 +66,7 @@ class EsBunshee {
 
     noStroke();
     textSize(10);
-    fill(0, 120);
+    fill(120, 255);
     text('control: left arrow & up arrow | space bar & right arrow', 10, 30);
     text('predator: hit p', 10, 50);
     text(nf(frameCount, 8, 0) + ' // ' + nf(round(millis() / 1000), 8, 0) +
@@ -79,13 +74,21 @@ class EsBunshee {
 
   }
 
-  static beep(f, t, w, a) {
+  static beep(f, t, w, a, rt, ft) {
     var wave;
     wave = new p5.Oscillator();
     wave.setType(w);
-    wave.start();
-    wave.amp(a / 4);
-    wave.freq(map(f, 50, 100, 50, 600));
+    //  wave.start();
+    //console.log('sound', f, t, w, a, rt, ft);
+    //  f = map(f, 50, 100, 50, 600);
+    // if (ft != 0) {
+    //   wave.amp(a, rt);
+    //   wave.freq(f, ft);
+    //   //  console.log(f, f, a);
+    // } else {
+    wave.amp(abs(a), 1);
+    wave.freq(f, .5);
+    // }
     wave.stop(t);
   }
 

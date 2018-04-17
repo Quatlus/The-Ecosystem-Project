@@ -24,7 +24,8 @@ class EsPredator {
     direction.y = -abs(direction.x) * 6;
     //if(direction.y>-3) direction.y = 0;
     if (direction.y < -12) {
-      EsBunshee.beep(map(power, 50, 100, 20, 220), .06, 'triangle', 1);
+      //  beep(f, t, w, a, rt, ft) {
+      //EsBunshee.beep(map(power, 50, 100, 100, 600), .05, 'triangle', .1, 1, 0);
     }
     body.addForce(direction);
   }
@@ -60,6 +61,5 @@ class EsPredator {
     friction.mult(c);
     return friction;
   }
-
 
 }

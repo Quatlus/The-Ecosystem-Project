@@ -10,7 +10,7 @@ class EsPredatorsAndFood {
     this.run = 0;
 
     for (let i = 0; i < this.carrotCount; i++) {
-      this.carrots.push(new EsCarrot(random(-300, 0), 100 + i * (height / 2 -
+      this.carrots.push(new EsCarrot(random(-300, 0), 100 + i * (height / 1.5 +
         50) / this.carrotCount, random(5, 20)));
     }
 
@@ -48,8 +48,10 @@ class EsPredatorsAndFood {
       var kopf_links = karnickel.kopf.headposition.x - karnickel.kopf.size;
       var kopf_rechts = karnickel.kopf.headposition.x + karnickel.kopf.size;
       var carotte_x = carrot.position.x + carrot.size / 1;
-      var kopf_oben = karnickel.kopf.headposition.y - 1.5 * karnickel.kopf.size;
-      var kopf_unten = karnickel.kopf.headposition.y + .5 * karnickel.kopf.size;
+      var kopf_oben = karnickel.kopf.headposition.y - 1.5 * karnickel.kopf
+        .size;
+      var kopf_unten = karnickel.kopf.headposition.y + .5 * karnickel.kopf
+        .size;
       var carotte_y = carrot.position.y - carrot.size / 2;
 
       if (carotte_x > kopf_links && carotte_x < kopf_rechts) {
@@ -59,15 +61,15 @@ class EsPredatorsAndFood {
           karnickel.parent.setMode(1);
           carrot.position.x = -random(100, 200);
           karnickel.feed(map(carrot.size, 5, 20, 2, 10));
-        //  console.log(karnickel.size);
-          EsBunshee.beep(map(carrot.size, 5, 20, 40, 60), .15, 'square', .5);
+          //  console.log(karnickel.size);
+          //beep(f, t, w, a, rt, ft) {sawtooth
+          EsBunshee.beep(map(karnickel.size, 50, 300, 100, 10), .5, 'sawtooth', 2, 0, 0);
         }
       }
 
     });
 
   }
-
 
   checkSelf(body) {
     for (let otherbody of bunsheeps) {
@@ -76,7 +78,7 @@ class EsPredatorsAndFood {
       if (otherbody != body) {
         let abstand = p5.Vector.sub(body.position, otherbody.position);
         let power = abstand.mag();
-        if(power < body.size*2) {
+        if (power < body.size * 2) {
           let direction = abstand.normalize();
           direction.mult(5);
           body.addForce(direction);
@@ -87,7 +89,6 @@ class EsPredatorsAndFood {
     // let power = abstand.mag();
     // let direction = abstand.normalize();
   }
-
 
   predatorShow() {
     this.predator.checkEdges();

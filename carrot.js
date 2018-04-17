@@ -56,13 +56,15 @@ class EsCarrot {
       this.velocity.x = .2 / this.size;
 
       for (let bunshee of bunsheeps) {
-        bunshee.karnickel.feed(-map(bunshee.karnickel.size,50,250,1,1));
+        bunshee.karnickel.feed(-map(bunshee.karnickel.size, 50, 250, .5, 5));
         bunshee.karnickel.parent.setFramesActive(frameCount);
         bunshee.karnickel.parent.setHit(1);
         bunshee.karnickel.parent.setMode(2);
       }
+      //beep(f, t, w, a, rt, fm)
+      //EsBunshee.beep(map(this.size, 25, 20, 48, 60), .4, 'sine', .8, .3, 3);
+      //EsBunshee.beep(map(this.size, 50, 100, 20, 220), .06, 'triangle', .3, .1,  0);
 
-      EsBunshee.beep(map(this.size, 5, 20, 48, 90), .1, 'triangle', .1);
     }
 
     if (this.position.y < -50) {

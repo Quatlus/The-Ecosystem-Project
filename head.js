@@ -2,7 +2,7 @@ class EsHead {
 
   constructor(s, x, y, this_) {
     this.size = s;
-    this.waverand = random(0,5);
+    this.waverand = random(0, 5);
     this.headposition = createVector(x, y);
     this.headacceleration = createVector(0, 0);
     this.eyesposition = this.headposition.copy();
@@ -20,12 +20,11 @@ class EsHead {
     var headSize = this.size;
     this.headposition.x = x;
     this.headposition.y = y;
-    var xwave = cos(radians(frameCount * 2 % 360)+this.waverand) * this.parent.size/3;
-    var ywave = sin(radians(frameCount * 8 % 360)+this.waverand) * this.parent.size/5 * .6;
+    var xwave = cos(radians(frameCount * 2 % 360) + this.waverand) * this.parent.size / 3;
+    var ywave = sin(radians(frameCount * 8 % 360) + this.waverand) * this.parent.size / 5 * .6;
     this.headacceleration.add(createVector(xwave * 1.2, ywave + this.size / 2));
     this.headposition.add(this.headacceleration);
     this.headposition.sub(velocity.mult(2)); // contra body
-
 
     fill(headColor);
     ellipse(this.headposition.x, this.headposition.y - headSize / 2, headSize,
