@@ -7,4 +7,4 @@ Incorporate the concept of forces into your ecosystem. Try introducing other ele
 
 > working on the Ecosystem ...
 
-[Imgur](https://i.imgur.com/rdy0j5S.jpg)
+![EsBunshee](https://i.imgur.com/rdy0j5S.jpg)
