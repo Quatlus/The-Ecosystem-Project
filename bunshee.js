@@ -59,8 +59,9 @@ class EsBunshee {
     textSize( 10 );
     fill( 120, 255 );
     text( 'control: left arrow & up arrow | space bar & right arrow', 10, 30 );
-    text( 'predator: hit p', 10, 50 );
-    text( nf( frameCount, 8, 0 ) + ' // ' + nf( round( millis() / 1000 ), 8, 0 ) +
+    text( 'predator: hit p // more bunny sheep cows: hit m', 10, 50 );
+    text( nf( frameCount, 8, 0 ) + ' // ' + nf( round( millis() / 1000 ), 8,
+        0 ) +
       ' // ' + nf( round( this.karnickel.size ), 10, 0 ), 10, 70 );
   }
   static beep( f, t, w, a, rt, ft ) {
